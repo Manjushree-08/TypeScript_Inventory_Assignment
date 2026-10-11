@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moss & Metric - a simple product inventory manager">
+    <title>Moss & Metric | Product Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#" aria-label="Moss and Metric home">
+            <span class="brand-mark">M</span>
+            <span>
+                <strong>Moss &amp; Metric</strong>
+                <small>THE LITTLE INVENTORY STUDIO</small>
+            </span>
+        </a>
+
+        <div class="header-note">
+            <span class="status-dot"></span>
+            Inventory workspace
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="intro">
+            <p class="eyebrow">YOUR STOCK, IN GOOD ORDER</p>
+            <h1>Keep track of<br><span>the little things.</span></h1>
+            <p class="intro-copy">
+                A simple, organised space to manage your products,
+                watch stock levels and know what your shelves are worth.
+            </p>
+        </section>
+
+        <section class="summary-grid" aria-label="Inventory summary">
+            <article class="summary-card">
+                <span class="summary-label">TOTAL PRODUCTS</span>
+                <strong id="product-count">0</strong>
+                <span class="summary-foot">Items in your catalogue</span>
+            </article>
+
+            <article class="summary-card summary-card-featured">
+                <span class="summary-label">INVENTORY VALUE</span>
+                <strong id="inventory-value">₹0.00</strong>
+                <span class="summary-foot">Price × quantity</span>
+            </article>
+
+            <article class="summary-card">
+                <span class="summary-label">LOW STOCK</span>
+                <strong id="low-stock-count">0</strong>
+                <span class="summary-foot">Five units or fewer</span>
+            </article>
+        </section>
+
+        <section class="workspace">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PRODUCT MANAGEMENT</p>
+                    <h2>Your collection</h2>
+                </div>
+                <span id="visible-count" class="item-counter">0 products</span>
+            </div>
+
+            <div class="toolbar">
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search products or categories..."
+                        aria-label="Search products or categories"
+                    >
+                </label>
+
+                <label class="filter-box">
+                    <span class="sr-only">Filter by stock status</span>
+                    <select id="stock-filter">
+                        <option value="all">All stock</option>
+                        <option value="available">In stock</option>
+                        <option value="out">Out of stock</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="product-list" id="product-list">
+                <p class="loading-message">Loading your products...</p>
+            </div>
+
+            <p class="list-note">
+                <span class="status-dot"></span>
+                Stock status updates automatically when quantities change.
+            </p>
+        </section>
+
+        <section class="add-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">GROW YOUR COLLECTION</p>
+                    <h2>Add a product</h2>
+                </div>
+                <span class="form-symbol" aria-hidden="true">＋</span>
+            </div>
+
+            <form id="product-form">
+                <div class="form-grid">
+                    <label class="form-field">
+                        Product name
+                        <input
+                            type="text"
+                            id="product-name"
+                            placeholder="e.g. Ceramic mug"
+                            maxlength="60"
+                            required
+                        >
+                    </label>
+
+                    <label class="form-field">
+                        Category
+                        <select id="product-category" required>
+                            <option value="">Choose category</option>
+                            <option value="Stationery">Stationery</option>
+                            <option value="Homeware">Homeware</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+
+                    <label class="form-field">
+                        Price (₹)
+                        <input
+                            type="number"
+                            id="product-price"
+                            placeholder="0.00"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </label>
+
+                    <label class="form-field">
+                        Quantity
+                        <input
+                            type="number"
+                            id="product-quantity"
+                            placeholder="0"
+                            min="0"
+                            step="1"
+                            required
+                        >
+                    </label>
+                </div>
+
+                <div class="form-footer">
+                    <p>Products with five units or fewer are marked as low stock.</p>
+                    <button type="submit" class="add-button">
+                        <span aria-hidden="true">＋</span> Add product
+                    </button>
+                </div>
+
+                <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <footer class="site-footer">
+            <span>MOSS &amp; METRIC</span>
+            <span>A little order goes a long way.</span>
+            <span>Built with TypeScript</span>
+        </footer>
+    </main>
+
+    <script src="dist/app.js" defer></script>
+</body>
+</html>
